@@ -1,0 +1,33 @@
+img{
+    height: 300px;
+    width: 200px;
+}
+h1{
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: 'PT Sans', sans-serif;
+}
+.info_order div ul{
+    padding-left: 0;
+}
+ul li:nth-child(1) {
+    float: left;
+    display: inline;
+}
+ul li:nth-child(2){
+    float: left;
+    margin-left: 10px;
+}
+ul li:nth-child(3){
+    float:right;
+    display: inline;
+
+}
+.info_order > div{
+min-height: 50px;
+}
+img{
+display: block;
+    margin-left: auto;
+    margin-right: auto
+}

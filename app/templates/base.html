@@ -1,0 +1,105 @@
+<html>
+    <head>
+        {% block head_top %}
+
+
+{% endblock %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link href="{{ url_for('static', filename='css/froala/froala_editor.pkgd.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/froala/froala_style.min.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base_white.css') }}">
+{% block head %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+      {% if title %}
+      <title>{{ title }} - WebSites</title>
+      {% else %}
+      <title>Welcome to WebSites</title>
+      {% endif %}
+    </head>
+    <body class="container-fluid">
+
+        <header class="container-fluid">
+            <div class="row">
+
+  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-5 justify-content-center">
+    <img class="logo" src="{{ url_for('static', filename='img/logo.png') }}"></div>
+
+
+  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-1" id="home">
+    <a href="{{ url_for('index') }}">
+ <!--   <img class="logo" src="{{ url_for('static', filename='img/home.png') }}"> -->
+                <span class="text-center">Home</span></a>
+
+  </div>
+  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-1" id="tasks">
+   <a href="{{ url_for('tasks') }}">
+<!--<img class="logo" src="{{ url_for('static', filename='img/tasks.png') }}"> -->
+                    <span class="text-center">Tasks</span></a>
+
+  </div>
+  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-1" id="articles">
+    <a href="{{ url_for('articles') }}">
+<!--<img class="logo" src="{{ url_for('static', filename='img/articles.png') }}">-->
+                    <span class="text-center">Articles</span></a>
+
+  </div>
+  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-1" id="about">
+    <a href="{{ url_for('about') }}">
+<!--<img class="logo" src="{{ url_for('static', filename='img/about.png') }}">-->
+                    <span class="text-center">About</span></a>
+
+  </div>
+                    {% if current_user.is_anonymous %}
+  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-1" id="login">
+    <a href="{{ url_for('login') }}">
+                    <span class="text-center">Login</span></a>
+  </div>
+                    {% else %}
+                <div class="col-xs-12 col-sm-2 col-md-1 col-lg-2 col-xl-1" id="logout">
+    <a href="{{ url_for('logout') }}">
+                    <span class="text-center">Logout</span></a>
+  </div>
+                {% endif %}
+</div>
+
+
+
+
+
+        </header>
+
+
+
+     {% block content %}
+
+
+    {% endblock %}
+
+
+
+<hr>
+<footer class="container-fluid">
+    <div class="row">
+    <div class="col-xs-12 justify-content-center">
+
+     {% block footer %}{% endblock %}
+
+    <p class="text-center">by SamaraHackers</p>
+    </div>
+    </div>
+</footer>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/articles.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tasks.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+<script src="{{url_for('static', filename='js/modal.js')}}"></script>
+{% endblock %}
+
+
+{% block content %}
+
+<main class="container">
+{% for category in category_tasks.keys() %}
+    <h2 class="title">{{category}}</h2>
+	<div class="row">
+
+        {% for item in category_tasks.get(category) %}
+        {% if item in resolved_tasks %}
+		<a href="#" class="task_square col-md-2 js-open-modal resolved" data-modal="{{item.id}}">
+        {% else %}
+		<a href="#" class="task_square col-md-2 js-open-modal" data-modal="{{item.id}}">
+        {% endif %}
+            <h2>{{item["name"]}}</h2>
+            <p>{{item.short_about}}</p>
+		</a>
+		<form class="modal" data-modal="{{item.id}}" method="post" action="#">
+   <!--   Svg иконка для закрытия окна  -->
+   <svg class="modal__cross js-modal-close" xmlns="http://www.w3.org/2000/svg"               viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+   <p class="modal__title">{{item.name}}</p>
+            <p class="modal-body">{{item.about}}</p>
+            <input style="display:none" name="id" value="{{item.id}}">
+            <input type="text" size="30" name="flag">
+            <input type="submit" value="Отправить">
+</form>
+
+        {% endfor %}
+
+
+
+	</div>
+{% endfor %}
+    <!-- Подложка под модальным окном -->
+    <div class="overlay js-overlay-modal"></div>
+
+</main>
+
+{% endblock %}

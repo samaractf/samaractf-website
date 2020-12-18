@@ -1,0 +1,69 @@
+
+main {
+    height:auto;
+
+}
+main .row{
+      display: flex;
+  flex-wrap: wrap;
+
+}
+main div{
+
+}
+main img{  /* на весь размер экрана, вычитая шапку*/
+   max-width: 100%;
+    display: flex;
+    width: 100%;
+}
+
+.container-fluid{
+    margin-left: 0px;
+        padding-left: 0px;
+
+}
+
+main > .row >div{
+    height: 100vh;
+    display: flex;
+
+}
+main > .row:first-child > div {
+    height: calc(100vh - 110px);
+    font-size:30px;
+    width:50%;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.wrapper .text{
+     font-size: 2.2vw;
+}
+.header .text{
+    font-size: 5.3vw;
+}
+
+#gradient-horizontal {
+  --color-stop-1: #a770ef;
+  --color-stop-2: #cf8bf3;
+  --color-stop-3: #fdb99b;
+}
+#gradient-vertical {
+  --color-stop-1: #00c3ff;
+  --color-stop-2: #77e190;
+  --color-stop-3: #ffff1c;
+}
+svg{
+  /* fill: url(#gradient-horizontal) gray;
+  /* We could use it as a stroke fill too:
+  stroke: url(#gradient-horizontal) gray; */
+    fill: url(#lgrad)
+}
+.wrapper{
+    overflow-x:hidden;
+}
+.box_svg{
+    height: min-content;
+}

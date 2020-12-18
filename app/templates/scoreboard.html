@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}">
+<script src="{{ url_for('static', filename='js/scrollme.js') }}" xmlns="http://www.w3.org/1999/html"></script>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron wrapper">
+				<div>
+					{% for i in resolved_tasks %}
+					<h3>{{ i.users.username }} pwned {{ i.tasks.name }}</h3>
+					<p>{{ i.data }} {{i.users.username}} pwned {{ i.tasks.name }} and get {{i.tasks.price}}SCF</p>
+					{% endfor %}
+				</div>
+			</div>
+			</div>
+
+
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							#
+						</th>
+						<th>
+							Name
+						</th>
+						<th>
+							Score
+						</th>
+                        {% for category in categories %}
+                        <th>
+                            {{category}}
+                        </th>
+                        {% endfor %}
+					</tr>
+				</thead>
+				<tbody>
+                {% for target in data %}
+					<tr>
+						<td>
+							{{ loop.index }}
+						</td>
+						<td>
+                            {{ target['username'] }}
+						</td>
+						<td>
+							{{ target['all_score'] }}
+						</td>
+                        {% for category in categories %}
+                        <td>
+						{{target[category]}}
+                        </td>
+                        {% endfor %}
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

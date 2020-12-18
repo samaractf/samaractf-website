@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/articles.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<main class="container">
+    <h2 class="title">about</h2>
+
+
+    <div class="content">
+    <p>Сайт создан ctf комьюнити в Самаре. Здесь вы можете найти обучающие материалы, таски по информационной безопасности.</p>
+        <p><img class="fr-draggable fr-fir fr-dii" src="/uploads/qr_chat1.png" style="width: 300px;"></p>
+        <h4>Канал</h4>
+        <p>@SamaraCTF</p>
+        <h4>Разработчики</h4>
+        <p>@GlKorol</p>
+        <p>@b27etula</p>
+    </div>
+</main>
+
+{% endblock %}

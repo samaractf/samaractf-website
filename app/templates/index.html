@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block head %}
+<script src="{{ url_for('static', filename='js/scrollme.js') }}" xmlns="http://www.w3.org/1999/html"></script>
+<script src="{{ url_for('static', filename='js/effect_caesar.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/effect_caesar.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="container-fluid">
+<div class="row">
+    <div class="col-12 header">
+
+
+        <div class="text"></div>
+
+        <!--<p class="text-center gradient-text">Взлом на самом деле означает исследовать систему своими собственными способами и кодом, не делая то же самое снова и снова</p> -->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-4 col">
+        <img src="{{ url_for('static', filename='img/notebook.jpg') }}">
+    </div>
+    <div class="col-md-8 col">
+
+
+        <div class="wrapper">
+            <h2>
+                CTF
+            </h2>
+            <p class="text">Своеобразное соревнование между хакерами, которые проходят на всяческих хакатонах,
+                конференциях и прочих интересных мероприятиях. Capture the Flag – расшифровывается как захват флага,
+                произошла от компьютерных игр, где задача достать флаг. Задача, с которой сталкиваются участники, сходна
+                с реальной работой консультанта по информационной безопасности в новой организации. Необходимость
+                защищать свой сервер и, в то же время, исследовать, атаковать и размещать свои флаги на чужих
+                серверах.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-4 col">
+        <img src="{{ url_for('static', filename='img/flag2.png') }}">
+    </div>
+    <div class="col-md-8 col">
+
+
+        <div class="wrapper">
+            <h2>
+                Not
+            </h2>
+            <p class="text">Не стоит путать со студенческими олимпиадами по программированию,где вы сидите в серых
+                аудиториях, и вам запрещается пользоваться интеренетом, звонить, выходить из аудитории и прочее. В CTF
+                вы вольны делать, всё что вам вздумается. Пользоваться гуглом, звонить друзьям, взламывать компьютеры
+                соперников, чтобы украть полученные ими флаги, менять участников команды на лету, всё это разрешено. А
+                любое творческое решение задачи приветствуется</p>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+</main>

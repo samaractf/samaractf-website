@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block head_top %}
+<title>{{page.title}}</title>
+{% endblock %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/post.css') }}">
+
+{% if rules  %}
+    <script type='text/javascript' src="{{ url_for('static', filename='js/froala/froala_editor.pkgd.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/froala/froala_editor.min.js') }}"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/froala/froala_editor.pkgd.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/froala/froala_style.min.css') }}" rel="stylesheet" type="text/css" />
+  <!-- <link href="{{ url_for('static', filename='css/froala/dark.min.css') }}" rel="stylesheet">
+-->
+
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+<main class="container">
+    <form class="new-post" enctype="multipart/form-data" action="{{ url_for('page.edit_view')  }}{{page.id}}" method="post">
+    <div class="settings-tools">
+        <div>
+<input class="form-check-input" type="checkbox" value="visible" name="visible"  {% if page.is_visible %} checked {% endif %}>
+  <label class="form-check-label" for="visible">
+    visible
+  </label>
+</div>
+  <div>
+   <input class="form-check-input" type="checkbox" value="change" id="change_img" name="change_img"  {% if page.is_visible %} checked {% endif %}>
+  <label class="form-check-label" for="change_img">
+    change_img
+  </label>
+ </div>
+
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="text" name="new_title" value="{{page.title}}" id="input_title" required>
+    </div>
+
+
+        {% if flag  %}
+    {{ form.hidden_tag() }}
+    {{ form.file}}
+    {% for error in form.file.errors %}
+        <span style="color: red;">{{ error }}</span>
+    {% endfor %}
+
+{% endif %}
+    <textarea class="froala-editor" name="new_content">
+
+
+
+    {{page.body|safe}}
+         {% if rules  %}
+        </textarea>
+        {% else %}
+    </div>
+        {% endif %}
+
+        <button class="btn btn-primary mb-2 float-right" type="sumit" name="button">Go</button>
+</form>
+</main>
+
+ {% if rules  %}
+
+<script>
+$('#change_img').on('click', function () {
+    if ( $(this).is(':checked') ) {
+        // checkbox checked
+        //<input id="file" name="file" required="" type="file">
+        var elem = document.querySelector("#csrf_token");
+        var input = document.createElement("input");
+        input.name = "file"
+        input.id = "file"
+        input.type = "file"
+        elem.after(input);
+
+    } else {
+        $('#file').remove();
+    }
+})
+</script>
+
+
+    <script>
+       $(function() {
+        $('.froala-editor').froalaEditor({
+            toolbarInline: true,
+    charCounterCount: false,
+    toolbarVisibleWithoutSelection: true,
+            imageUploadURL: '/admin/uploads_img',
+        theme: 'dark',
+        // Set max image size to 5MB.
+        imageMaxSize: 5 * 1024 * 1024,
+        // Allow to upload PNG and JPG.
+        imageAllowedTypes: ['jpeg', 'jpg', 'png'],
+            key: "ACTIVATION_KEY"
+
+        })
+      });
+
+
+</script>
+{% endif %}
+
+{% endblock %}

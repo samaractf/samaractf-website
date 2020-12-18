@@ -1,0 +1,11 @@
+h6{
+color:green;
+text-align:justify
+}
+.task_name{
+text-decoration: line-through
+}
+.wrapper{
+    overflow-x:hidden;
+    max-height: 340px;
+}
